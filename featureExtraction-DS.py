@@ -2,14 +2,15 @@ import pandas as pd
 import re
 from sklearn.feature_extraction.text import TfidfVectorizer
 
-def feature_extraction_and_display(input_filename='mental_health.csv', output_filename='mental_health_features.csv'):
+def feature_extraction_and_display(input_filename='mental_health_dataset.json', output_filename='mental_health_features.csv'):
     """
     Loads, preprocesses, and performs TF-IDF feature extraction on a CSV file.
     It prints the results at each major step for review.
     """
-    try:
+   try:
         # 1. Load the dataset
-        df = pd.read_csv(input_filename)
+        # --- MODIFIED LINE ---
+        df = pd.read_json(input_filename, lines=True)
         print(f"--- 1. Successfully loaded '{input_filename}'. ---")
         print("Original DataFrame head:")
         print(df.head())
